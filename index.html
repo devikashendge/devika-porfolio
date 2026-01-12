@@ -12,12 +12,18 @@
 			box-sizing: border-box;
 		}
 
-		/* Light page background */
+		/* Smooth scrolling for nav */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		/* Light page background with subtle gradient */
 		body {
 			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 			line-height: 1.6;
 			color: #0f172a;
-			background: #f3f4f6;
+			background: radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 40%, #e5e7eb 100%);
+			perspective: 1200px; /* for 3D transforms */
 		}
 
 		a {
@@ -36,13 +42,172 @@
 			padding: 2.5rem 1.5rem;
 		}
 
-		/* Hero card container */
-		.hero-card {
+		/* ====================== NAV BAR ====================== */
+
+		.nav-wrapper {
+			position: sticky;
+			top: 0;
+			z-index: 50;
+			padding: 0.75rem 1.2rem;
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
+		}
+
+		.nav-inner {
+			max-width: 1024px;
+			margin: 0 auto;
+		}
+
+		.nav-bar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.6rem 1.2rem;
+			border-radius: 999px;
+			background: rgba(248, 250, 252, 0.9);
+			box-shadow:
+				0 10px 25px rgba(15, 23, 42, 0.15),
+				0 0 0 1px rgba(148, 163, 184, 0.4);
+			border: 1px solid rgba(226, 232, 240, 0.9);
+			transform-style: preserve-3d;
+			transition:
+				transform 200ms ease,
+				box-shadow 200ms ease,
+				background 200ms ease;
+		}
+
+		.nav-bar:hover {
+			transform: translateY(-3px) translateZ(12px);
+			box-shadow:
+				0 16px 34px rgba(15, 23, 42, 0.22),
+				0 0 0 1px rgba(129, 140, 248, 0.6);
+			background: rgba(255, 255, 255, 0.96);
+		}
+
+		.nav-left {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.nav-logo-circle {
+			width: 28px;
+			height: 28px;
+			border-radius: 999px;
+			background: linear-gradient(135deg, #2563eb, #4f46e5);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #eff6ff;
+			font-size: 0.85rem;
+			font-weight: 700;
+			box-shadow: 0 6px 14px rgba(37, 99, 235, 0.45);
+		}
+
+		.nav-name {
+			font-size: 0.98rem;
+			font-weight: 600;
+			color: #0f172a;
+		}
+
+		.nav-role {
+			font-size: 0.78rem;
+			color: #6b7280;
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 0.9rem;
+			font-size: 0.9rem;
+		}
+
+		.nav-link {
+			color: #4b5563;
+			padding: 0.3rem 0.7rem;
+			border-radius: 999px;
+			border: 1px solid transparent;
+			text-decoration: none;
+			transition:
+				background 160ms ease,
+				color 160ms ease,
+				border-color 160ms ease,
+				transform 160ms ease;
+		}
+
+		.nav-link:hover {
+			background: #eff6ff;
+			color: #1d4ed8;
+			border-color: #bfdbfe;
+			transform: translateY(-1px);
+			text-decoration: none;
+		}
+
+		.nav-link-primary {
+			background: #2563eb;
+			color: #ffffff;
+			padding: 0.35rem 0.9rem;
+			border-radius: 999px;
+			border: 1px solid #1d4ed8;
+			box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
+		}
+
+		.nav-link-primary:hover {
+			background: #1d4ed8;
+			color: #ffffff;
+			border-color: #1d4ed8;
+		}
+
+		@media (max-width: 720px) {
+			.nav-bar {
+				padding: 0.6rem 0.9rem;
+			}
+			.nav-links {
+				gap: 0.5rem;
+				font-size: 0.8rem;
+			}
+			.nav-link:nth-child(2),
+			.nav-link:nth-child(3) {
+				display: none; /* hide some links on very small screens */
+			}
+		}
+
+		/* ====================== 3D CARD BASE ====================== */
+
+		.card-3d {
 			background: #ffffff;
 			border-radius: 1rem;
-			padding: 2.5rem 2rem;
-			box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
 			border: 1px solid #e5e7eb;
+			box-shadow:
+				0 18px 35px rgba(15, 23, 42, 0.12),
+				0 0 0 1px rgba(148, 163, 184, 0.25);
+			transform: translateZ(0);
+			transform-style: preserve-3d;
+			transition:
+				transform 220ms ease,
+				box-shadow 220ms ease,
+				border-color 220ms ease,
+				background 220ms ease;
+		}
+
+		.card-3d:hover {
+			transform: translateY(-10px) rotateX(4deg) rotateY(-4deg) translateZ(20px);
+			box-shadow:
+				0 28px 60px rgba(15, 23, 42, 0.25),
+				0 0 0 1px rgba(129, 140, 248, 0.5);
+			border-color: #6366f1;
+			background: #f9fafb;
+		}
+
+		/* ====================== HERO ====================== */
+
+		.hero {
+			padding-top: 2.2rem;
+			padding-bottom: 3.2rem;
+		}
+
+		.hero-card {
+			padding: 2.5rem 2rem;
 		}
 
 		h1, h2, h3 {
@@ -85,6 +250,8 @@
 			text-transform: uppercase;
 			letter-spacing: 0.08em;
 			margin-bottom: 1rem;
+			box-shadow: 0 8px 18px rgba(22, 163, 74, 0.35);
+			transform: translateZ(25px);
 		}
 
 		.profession-dot {
@@ -92,12 +259,6 @@
 			height: 7px;
 			border-radius: 999px;
 			background: #022c22;
-		}
-
-		/* Hero */
-		.hero {
-			padding-top: 3.2rem;
-			padding-bottom: 3.2rem;
 		}
 
 		.hero-subtitle {
@@ -145,16 +306,25 @@
 			display: inline-flex;
 			align-items: center;
 			gap: 0.4rem;
+			transform: translateZ(20px);
+			transition:
+				transform 200ms ease,
+				box-shadow 200ms ease,
+				background 200ms ease,
+				border-color 200ms ease;
 		}
 
 		.btn-primary {
 			background: #2563eb;
 			color: #ffffff;
 			font-weight: 600;
+			box-shadow: 0 10px 18px rgba(37, 99, 235, 0.35);
 		}
 
 		.btn-primary:hover {
 			background: #1d4ed8;
+			transform: translateZ(26px) translateY(-2px);
+			box-shadow: 0 16px 26px rgba(37, 99, 235, 0.45);
 		}
 
 		.btn-secondary {
@@ -164,7 +334,10 @@
 		}
 
 		.btn-secondary:hover {
-			background: #f9fafb;
+			background: #f3f4ff;
+			border-color: #4f46e5;
+			transform: translateZ(24px) translateY(-1px);
+			box-shadow: 0 10px 18px rgba(79, 70, 229, 0.18);
 		}
 
 		.hero-meta {
@@ -174,6 +347,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			gap: 0.75rem;
+			transform: translateZ(10px);
 		}
 
 		.hero-meta span {
@@ -188,11 +362,7 @@
 
 		/* Section container cards */
 		.section-card {
-			background: #ffffff;
-			border-radius: 1rem;
 			padding: 2rem 2rem;
-			box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-			border: 1px solid #e5e7eb;
 			margin-bottom: 1.8rem;
 		}
 
@@ -235,15 +405,34 @@
 			padding: 0.25rem 0.75rem;
 			font-size: 0.85rem;
 			border: 1px solid #d1d5db;
+			box-shadow: 0 3px 6px rgba(15, 23, 42, 0.08);
 		}
 
 		/* Projects & experience */
 		.card {
-			background: #f9fafb;
 			border-radius: 0.9rem;
 			padding: 1.2rem 1.3rem;
 			margin-bottom: 1rem;
+			background: #f9fafb;
 			border: 1px solid #e5e7eb;
+			box-shadow:
+				0 10px 20px rgba(15, 23, 42, 0.06),
+				0 0 0 1px rgba(148, 163, 184, 0.15);
+			transform-style: preserve-3d;
+			transition:
+				transform 220ms ease,
+				box-shadow 220ms ease,
+				border-color 220ms ease,
+				background 220ms ease;
+		}
+
+		.card:hover {
+			transform: translateY(-8px) rotateX(3deg) rotateY(-3deg) translateZ(16px);
+			box-shadow:
+				0 20px 36px rgba(15, 23, 42, 0.16),
+				0 0 0 1px rgba(129, 140, 248, 0.5);
+			border-color: #6366f1;
+			background: #ffffff;
 		}
 
 		.card-title {
@@ -291,8 +480,29 @@
 </head>
 <body>
 
+	<!-- NAVIGATION -->
+	<div class="nav-wrapper">
+		<div class="nav-inner">
+			<div class="nav-bar">
+				<div class="nav-left">
+					<div class="nav-logo-circle">DS</div>
+					<div>
+						<div class="nav-name">Devika Shendge</div>
+						<div class="nav-role">Junior Data Analyst</div>
+					</div>
+				</div>
+				<nav class="nav-links">
+					<a href="#top" class="nav-link">Home</a>
+					<a href="#projects" class="nav-link">Projects</a>
+					<a href="#experience" class="nav-link">Experience</a>
+					<a href="#contact" class="nav-link nav-link-primary">Contact</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+
 	<header class="hero" id="top">
-		<div class="hero-card">
+		<div class="hero-card card-3d">
 			<div class="profession-badge">
 				<span class="profession-dot"></span>
 				Junior Data Analyst
@@ -328,7 +538,7 @@
 	</header>
 
 	<section id="about">
-		<div class="section-card">
+		<div class="section-card card-3d">
 			<h2>About Me</h2>
 			<p>
 				I am a Junior Data Analyst with a strong foundation in data cleaning, data transformation,
@@ -349,7 +559,7 @@
 	</section>
 
 	<section id="skills">
-		<div class="section-card">
+		<div class="section-card card-3d">
 			<h2>Skills</h2>
 			<div class="section-grid">
 				<div>
@@ -410,7 +620,7 @@
 	</section>
 
 	<section id="projects">
-		<div class="section-card">
+		<div class="section-card card-3d">
 			<h2>Projects</h2>
 
 			<div class="card">
@@ -464,7 +674,7 @@
 	</section>
 
 	<section id="experience">
-		<div class="section-card">
+		<div class="section-card card-3d">
 			<h2>Experience</h2>
 
 			<div class="card">
@@ -490,7 +700,7 @@
 	</section>
 
 	<section id="education">
-		<div class="section-card">
+		<div class="section-card card-3d">
 			<h2>Education</h2>
 			<div class="card">
 				<div class="card-title">Bachelor of Technology in Computer Science Engineering (AI &amp; ML)</div>
@@ -501,7 +711,7 @@
 	</section>
 
 	<section id="certifications">
-		<div class="section-card">
+		<div class="section-card card-3d">
 			<h2>Certifications</h2>
 			<ul>
 				<li>IBM Data Analyst Professional Certificate (2025)</li>
@@ -512,7 +722,7 @@
 	</section>
 
 	<section id="contact">
-		<div class="section-card">
+		<div class="section-card card-3d">
 			<h2>Contact</h2>
 			<p>
 				I am actively seeking Junior Data Analyst and data-focused roles, especially in Dubai,
