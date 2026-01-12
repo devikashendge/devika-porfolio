@@ -12,18 +12,12 @@
 			box-sizing: border-box;
 		}
 
-		/* Smooth scrolling for nav */
-		html {
-			scroll-behavior: smooth;
-		}
-
 		/* Light page background with subtle gradient */
 		body {
 			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 			line-height: 1.6;
 			color: #0f172a;
 			background: radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 40%, #e5e7eb 100%);
-			perspective: 1200px; /* for 3D transforms */
 		}
 
 		a {
@@ -42,138 +36,13 @@
 			padding: 2.5rem 1.5rem;
 		}
 
-		/* ====================== NAV BAR ====================== */
-
-		.nav-wrapper {
-			position: sticky;
-			top: 0;
-			z-index: 50;
-			padding: 0.75rem 1.2rem;
-			backdrop-filter: blur(14px);
-			-webkit-backdrop-filter: blur(14px);
+		/* GLOBAL 3D SETTINGS */
+		/* The main wrapper that gives us a perspective for 3D transforms */
+		body {
+			perspective: 1200px;
 		}
 
-		.nav-inner {
-			max-width: 1024px;
-			margin: 0 auto;
-		}
-
-		.nav-bar {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			padding: 0.6rem 1.2rem;
-			border-radius: 999px;
-			background: rgba(248, 250, 252, 0.9);
-			box-shadow:
-				0 10px 25px rgba(15, 23, 42, 0.15),
-				0 0 0 1px rgba(148, 163, 184, 0.4);
-			border: 1px solid rgba(226, 232, 240, 0.9);
-			transform-style: preserve-3d;
-			transition:
-				transform 200ms ease,
-				box-shadow 200ms ease,
-				background 200ms ease;
-		}
-
-		.nav-bar:hover {
-			transform: translateY(-3px) translateZ(12px);
-			box-shadow:
-				0 16px 34px rgba(15, 23, 42, 0.22),
-				0 0 0 1px rgba(129, 140, 248, 0.6);
-			background: rgba(255, 255, 255, 0.96);
-		}
-
-		.nav-left {
-			display: flex;
-			align-items: center;
-			gap: 0.5rem;
-		}
-
-		.nav-logo-circle {
-			width: 28px;
-			height: 28px;
-			border-radius: 999px;
-			background: linear-gradient(135deg, #2563eb, #4f46e5);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			color: #eff6ff;
-			font-size: 0.85rem;
-			font-weight: 700;
-			box-shadow: 0 6px 14px rgba(37, 99, 235, 0.45);
-		}
-
-		.nav-name {
-			font-size: 0.98rem;
-			font-weight: 600;
-			color: #0f172a;
-		}
-
-		.nav-role {
-			font-size: 0.78rem;
-			color: #6b7280;
-		}
-
-		.nav-links {
-			display: flex;
-			align-items: center;
-			gap: 0.9rem;
-			font-size: 0.9rem;
-		}
-
-		.nav-link {
-			color: #4b5563;
-			padding: 0.3rem 0.7rem;
-			border-radius: 999px;
-			border: 1px solid transparent;
-			text-decoration: none;
-			transition:
-				background 160ms ease,
-				color 160ms ease,
-				border-color 160ms ease,
-				transform 160ms ease;
-		}
-
-		.nav-link:hover {
-			background: #eff6ff;
-			color: #1d4ed8;
-			border-color: #bfdbfe;
-			transform: translateY(-1px);
-			text-decoration: none;
-		}
-
-		.nav-link-primary {
-			background: #2563eb;
-			color: #ffffff;
-			padding: 0.35rem 0.9rem;
-			border-radius: 999px;
-			border: 1px solid #1d4ed8;
-			box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
-		}
-
-		.nav-link-primary:hover {
-			background: #1d4ed8;
-			color: #ffffff;
-			border-color: #1d4ed8;
-		}
-
-		@media (max-width: 720px) {
-			.nav-bar {
-				padding: 0.6rem 0.9rem;
-			}
-			.nav-links {
-				gap: 0.5rem;
-				font-size: 0.8rem;
-			}
-			.nav-link:nth-child(2),
-			.nav-link:nth-child(3) {
-				display: none; /* hide some links on very small screens */
-			}
-		}
-
-		/* ====================== 3D CARD BASE ====================== */
-
+		/* Re-usable 3D card base */
 		.card-3d {
 			background: #ffffff;
 			border-radius: 1rem;
@@ -199,13 +68,7 @@
 			background: #f9fafb;
 		}
 
-		/* ====================== HERO ====================== */
-
-		.hero {
-			padding-top: 2.2rem;
-			padding-bottom: 3.2rem;
-		}
-
+		/* Hero card container (extends 3D card) */
 		.hero-card {
 			padding: 2.5rem 2rem;
 		}
@@ -259,6 +122,12 @@
 			height: 7px;
 			border-radius: 999px;
 			background: #022c22;
+		}
+
+		/* Hero */
+		.hero {
+			padding-top: 3.2rem;
+			padding-bottom: 3.2rem;
 		}
 
 		.hero-subtitle {
@@ -480,27 +349,6 @@
 </head>
 <body>
 
-	<!-- NAVIGATION -->
-	<div class="nav-wrapper">
-		<div class="nav-inner">
-			<div class="nav-bar">
-				<div class="nav-left">
-					<div class="nav-logo-circle">DS</div>
-					<div>
-						<div class="nav-name">Devika Shendge</div>
-						<div class="nav-role">Junior Data Analyst</div>
-					</div>
-				</div>
-				<nav class="nav-links">
-					<a href="#top" class="nav-link">Home</a>
-					<a href="#projects" class="nav-link">Projects</a>
-					<a href="#experience" class="nav-link">Experience</a>
-					<a href="#contact" class="nav-link nav-link-primary">Contact</a>
-				</nav>
-			</div>
-		</div>
-	</div>
-
 	<header class="hero" id="top">
 		<div class="hero-card card-3d">
 			<div class="profession-badge">
@@ -711,7 +559,7 @@
 	</section>
 
 	<section id="certifications">
-		<div class="section-card card-3d">
+	Even	<div class="section-card card-3d">
 			<h2>Certifications</h2>
 			<ul>
 				<li>IBM Data Analyst Professional Certificate (2025)</li>
