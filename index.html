@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Devika Shendge | Junior Data Analyst</title>
+	<style>
+		/* Basic reset */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		/* Light page background */
+		body {
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+			line-height: 1.6;
+			color: #0f172a;
+			background: #f3f4f6;
+		}
+
+		a {
+			color: #2563eb;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		header,
+		section {
+			max-width: 1024px;
+			margin: 0 auto;
+			padding: 2.5rem 1.5rem;
+		}
+
+		/* Hero card container */
+		.hero-card {
+			background: #ffffff;
+			border-radius: 1rem;
+			padding: 2.5rem 2rem;
+			box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+			border: 1px solid #e5e7eb;
+		}
+
+		h1, h2, h3 {
+			color: #0f172a;
+		}
+
+		h1 {
+			font-size: 2.6rem;
+			letter-spacing: 0.03em;
+		}
+
+		h2 {
+			font-size: 1.7rem;
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid #e5e7eb;
+		}
+
+		h3 {
+			font-size: 1.1rem;
+			margin-bottom: 0.4rem;
+		}
+
+		p {
+			margin-bottom: 0.7rem;
+			color: #4b5563;
+		}
+
+		/* Profession title highlight */
+		.profession-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+			background: linear-gradient(135deg, #22c55e, #16a34a);
+			color: #022c22;
+			padding: 0.35rem 0.9rem;
+			border-radius: 999px;
+			font-size: 0.9rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			margin-bottom: 1rem;
+		}
+
+		.profession-dot {
+			width: 7px;
+			height: 7px;
+			border-radius: 999px;
+			background: #022c22;
+		}
+
+		/* Hero */
+		.hero {
+			padding-top: 3.2rem;
+			padding-bottom: 3.2rem;
+		}
+
+		.hero-subtitle {
+			color: #6b7280;
+			margin-top: 0.7rem;
+			font-size: 1.05rem;
+		}
+
+		.hero-main-text {
+			margin-top: 1.2rem;
+			color: #374151;
+		}
+
+		.hero-highlight {
+			color: #2563eb;
+			font-weight: 600;
+		}
+
+		.hero-name {
+			font-size: 2.6rem;
+			font-weight: 700;
+			color: #020617;
+			margin-bottom: 0.3rem;
+		}
+
+		.hero-role-line {
+			font-size: 1.1rem;
+			color: #4f46e5;
+		}
+
+		.hero-buttons {
+			margin-top: 1.6rem;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.9rem;
+		}
+
+		.btn-primary,
+		.btn-secondary {
+			padding: 0.7rem 1.5rem;
+			border-radius: 999px;
+			border: 1px solid transparent;
+			font-size: 0.95rem;
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+		}
+
+		.btn-primary {
+			background: #2563eb;
+			color: #ffffff;
+			font-weight: 600;
+		}
+
+		.btn-primary:hover {
+			background: #1d4ed8;
+		}
+
+		.btn-secondary {
+			background: #ffffff;
+			color: #111827;
+			border-color: #d1d5db;
+		}
+
+		.btn-secondary:hover {
+			background: #f9fafb;
+		}
+
+		.hero-meta {
+			margin-top: 1.3rem;
+			font-size: 0.95rem;
+			color: #6b7280;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+		}
+
+		.hero-meta span {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+		}
+
+		.hero-meta-icon {
+			font-size: 1rem;
+		}
+
+		/* Section container cards */
+		.section-card {
+			background: #ffffff;
+			border-radius: 1rem;
+			padding: 2rem 2rem;
+			box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+			border: 1px solid #e5e7eb;
+			margin-bottom: 1.8rem;
+		}
+
+		/* Layout helpers */
+		.section-grid {
+			display: grid;
+			grid-template-columns: 1.4fr 1.8fr;
+			gap: 2rem;
+		}
+
+		@media (max-width: 900px) {
+			.section-grid {
+				grid-template-columns: 1fr;
+			}
+			.hero-card,
+			.section-card {
+				padding: 1.8rem 1.4rem;
+			}
+			h1 {
+				font-size: 2.1rem;
+			}
+		}
+
+		/* Skills */
+		.skills-group {
+			margin-bottom: 1.5rem;
+		}
+
+		.skills-pill-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			margin-top: 0.4rem;
+		}
+
+		.skill-pill {
+			background: #e5e7eb;
+			color: #111827;
+			border-radius: 999px;
+			padding: 0.25rem 0.75rem;
+			font-size: 0.85rem;
+			border: 1px solid #d1d5db;
+		}
+
+		/* Projects & experience */
+		.card {
+			background: #f9fafb;
+			border-radius: 0.9rem;
+			padding: 1.2rem 1.3rem;
+			margin-bottom: 1rem;
+			border: 1px solid #e5e7eb;
+		}
+
+		.card-title {
+			font-weight: 600;
+			margin-bottom: 0.3rem;
+			color: #111827;
+		}
+
+		.card-subtitle {
+			font-size: 0.92rem;
+			color: #6b7280;
+			margin-bottom: 0.6rem;
+		}
+
+		.card-meta {
+			font-size: 0.85rem;
+			color: #6b7280;
+			margin-bottom: 0.6rem;
+		}
+
+		ul {
+			margin-left: 1.25rem;
+			margin-bottom: 0.6rem;
+			color: #4b5563;
+		}
+
+		.card-tech {
+			font-size: 0.85rem;
+			color: #4f46e5;
+			margin-top: 0.3rem;
+		}
+
+		/* Contact */
+		.contact-list p {
+			margin-bottom: 0.35rem;
+		}
+
+		footer {
+			text-align: center;
+			padding: 1.8rem 1.5rem 2.2rem;
+			font-size: 0.85rem;
+			color: #6b7280;
+		}
+	</style>
+</head>
+<body>
+
+	<header class="hero" id="top">
+		<div class="hero-card">
+			<div class="profession-badge">
+				<span class="profession-dot"></span>
+				Junior Data Analyst
+			</div>
+
+			<div class="hero-name">Devika Shendge</div>
+			<div class="hero-role-line">Data Analysis · Python · SQL · Power BI</div>
+
+			<p class="hero-subtitle">
+				I turn raw data into clear insights, dashboards, and decisions.
+			</p>
+
+			<p class="hero-main-text">
+				I’m a <span class="hero-highlight">Junior Data Analyst</span> with hands-on experience in data cleaning,
+				transformation, visualization, and cloud-based analytics. I’ve worked on real-world projects and
+				virtual internships with JP Morgan and AWS, and I’m actively seeking data analyst roles in Dubai.
+			</p>
+
+			<div class="hero-buttons">
+				<a href="https://drive.google.com/file/d/1F_PTzFWi1PIx5ijlUeIwEvaQy-CjxWo0/view?usp=drivesdk" class="btn-primary" target="_blank">
+					<span>Download Resume</span>
+				</a>
+				<a href="#projects" class="btn-secondary">
+					<span>View My Projects</span>
+				</a>
+			</div>
+
+			<div class="hero-meta">
+				<span><span class="hero-meta-icon">📍</span>Hyderabad, Telangana, India</span>
+				<span><span class="hero-meta-icon">🌍</span>Open to relocate: Dubai</span>
+			</div>
+		</div>
+	</header>
+
+	<section id="about">
+		<div class="section-card">
+			<h2>About Me</h2>
+			<p>
+				I am a Junior Data Analyst with a strong foundation in data cleaning, data transformation,
+				statistical analysis, and dashboard building using SQL, Excel, Power BI, and Python.
+			</p>
+			<p>
+				Through internships at JP Morgan Chase &amp; Co. and Amazon Web Services (AWS), I have worked
+				with financial and cloud-based data, practiced Agile workflows, and used industry-standard
+				tools to support data-driven decisions.
+			</p>
+			<p>
+				I enjoy exploring complex datasets, uncovering patterns, and turning them into clear,
+				actionable insights. I am especially interested in roles that combine business understanding
+				with technical problem-solving, and I am actively looking for data analyst opportunities
+				in Dubai with full relocation readiness.
+			</p>
+		</div>
+	</section>
+
+	<section id="skills">
+		<div class="section-card">
+			<h2>Skills</h2>
+			<div class="section-grid">
+				<div>
+					<div class="skills-group">
+						<h3>Data Analysis</h3>
+						<div class="skills-pill-list">
+							<span class="skill-pill">Data Cleaning</span>
+							<span class="skill-pill">Exploratory Data Analysis (EDA)</span>
+							<span class="skill-pill">Data Visualization</span>
+							<span class="skill-pill">Power BI</span>
+							<span class="skill-pill">Excel</span>
+							<span class="skill-pill">SQL</span>
+						</div>
+					</div>
+
+					<div class="skills-group">
+						<h3>Programming &amp; Libraries</h3>
+						<div class="skills-pill-list">
+							<span class="skill-pill">Python</span>
+							<span class="skill-pill">Pandas</span>
+							<span class="skill-pill">NumPy</span>
+							<span class="skill-pill">PostgreSQL</span>
+							<span class="skill-pill">Jupyter Notebook</span>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="skills-group">
+						<h3>Machine Learning &amp; AI</h3>
+						<div class="skills-pill-list">
+							<span class="skill-pill">Machine Learning Fundamentals</span>
+							<span class="skill-pill">TensorFlow</span>
+							<span class="skill-pill">PyTorch</span>
+							<span class="skill-pill">Scikit-learn</span>
+							<span class="skill-pill">NLP</span>
+							<span class="skill-pill">Generative AI</span>
+							<span class="skill-pill">LLMs</span>
+							<span class="skill-pill">Prompt Engineering</span>
+						</div>
+					</div>
+
+					<div class="skills-group">
+						<h3>Tools &amp; Web</h3>
+						<div class="skills-pill-list">
+							<span class="skill-pill">Git</span>
+							<span class="skill-pill">GitHub</span>
+							<span class="skill-pill">AWS</span>
+							<span class="skill-pill">OCI</span>
+							<span class="skill-pill">HTML</span>
+							<span class="skill-pill">CSS</span>
+							<span class="skill-pill">JavaScript</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="projects">
+		<div class="section-card">
+			<h2>Projects</h2>
+
+			<div class="card">
+				<div class="card-title">Hotel Booking Cancellation Analysis</div>
+				<p class="card-subtitle">End-to-end analysis of hotel booking data to understand cancellation drivers.</p>
+				<ul>
+					<li>Cleaned and transformed booking datasets using Python (Pandas, NumPy).</li>
+					<li>Performed EDA to study pricing, lead time, booking channels, and seasonality.</li>
+					<li>Created visualizations using Matplotlib and Seaborn to highlight trends.</li>
+					<li>Delivered a stakeholder-ready report with recommendations to reduce cancellations.</li>
+				</ul>
+				<p class="card-tech"><strong>Tech stack:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn</p>
+			</div>
+
+			<div class="card">
+				<div class="card-title">Customer Churn Analysis &amp; Retention Strategy</div>
+				<p class="card-subtitle">Analysis of customer churn to improve retention and loyalty.</p>
+				<ul>
+					<li>Cleaned and prepared churn datasets in Python.</li>
+					<li>Performed feature analysis and EDA for usage patterns, contract type, and tenure.</li>
+					<li>Used SQL to segment customers and assess churn risk for different groups.</li>
+					<li>Provided retention-focused insights to support churn reduction strategies.</li>
+				</ul>
+				<p class="card-tech"><strong>Tech stack:</strong> Python, Pandas, SQL, Jupyter</p>
+			</div>
+
+			<div class="card">
+				<div class="card-title">Consumer Behavior Analysis for Retail Business</div>
+				<p class="card-subtitle">Understanding shopping behavior to guide marketing and product decisions.</p>
+				<ul>
+					<li>Cleaned and transformed raw retail datasets using Python.</li>
+					<li>Used SQL to structure data and analyze customer segments and loyalty patterns.</li>
+					<li>Designed interactive Power BI dashboards for sales and customer behavior insights.</li>
+					<li>Prepared a report with data-driven recommendations for targeting and product strategy.</li>
+				</ul>
+				<p class="card-tech"><strong>Tech stack:</strong> Python, SQL, Power BI</p>
+			</div>
+
+			<div class="card">
+				<div class="card-title">Sales Performance Analysis &amp; Forecasting</div>
+				<p class="card-subtitle">Forecasting sales and supporting demand planning.</p>
+				<ul>
+					<li>Analyzed historical sales data for product performance and regional trends.</li>
+					<li>Built Python-based forecasting models to predict future demand.</li>
+					<li>Developed a Power BI dashboard to visualize KPIs, trends, and forecasts.</li>
+					<li>Supported inventory optimization and sales strategy with data-driven insights.</li>
+				</ul>
+				<p class="card-tech"><strong>Tech stack:</strong> Python, Power BI, Pandas, NumPy</p>
+			</div>
+		</div>
+	</section>
+
+	<section id="experience">
+		<div class="section-card">
+			<h2>Experience</h2>
+
+			<div class="card">
+				<div class="card-title">JP Morgan Chase &amp; Co. – Virtual Software Engineering Intern</div>
+				<div class="card-meta">Remote | 06/2023 – 07/2023</div>
+				<ul>
+					<li>Analyzed financial datasets to identify performance patterns and optimization opportunities.</li>
+					<li>Built a data-driven trading dashboard using Python and React.</li>
+					<li>Used Agile workflows and Git for version control in collaborative tasks.</li>
+				</ul>
+			</div>
+
+			<div class="card">
+				<div class="card-title">Amazon Web Services (AWS) – Virtual Cloud Computing Intern</div>
+				<div class="card-meta">Remote | 08/2023 – 09/2023</div>
+				<ul>
+					<li>Worked with cloud-based data processing using EC2, S3, and Lambda.</li>
+					<li>Implemented CI/CD pipelines and monitored system logs to track performance.</li>
+					<li>Strengthened understanding of cloud scalability, reliability, and analytics workflows.</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="education">
+		<div class="section-card">
+			<h2>Education</h2>
+			<div class="card">
+				<div class="card-title">Bachelor of Technology in Computer Science Engineering (AI &amp; ML)</div>
+				<div class="card-meta">Jawaharlal Nehru Technological University, Hyderabad – Hyderabad, Telangana</div>
+				<p><strong>Relevant coursework:</strong> Machine Learning, Deep Learning, Database Management Systems, Algorithms, Natural Language Processing (NLP), Applied Statistics</p>
+			</div>
+		</div>
+	</section>
+
+	<section id="certifications">
+		<div class="section-card">
+			<h2>Certifications</h2>
+			<ul>
+				<li>IBM Data Analyst Professional Certificate (2025)</li>
+				<li>Oracle Cloud Infrastructure 2025 AI Foundations</li>
+				<li>AWS Virtual Internship Certificate</li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="contact">
+		<div class="section-card">
+			<h2>Contact</h2>
+			<p>
+				I am actively seeking Junior Data Analyst and data-focused roles, especially in Dubai,
+				and I am fully open to relocation. If my work aligns with your needs, I would be happy
+				to connect.
+			</p>
+			<div class="contact-list">
+				<p><strong>Email:</strong> <a href="mailto:devikashendge009@gmail.com">devikashendge009@gmail.com</a></p>
+				<p><strong>Phone:</strong> <a href="tel:+919966322280">+91 99663 22280</a></p>
+				<p><strong>Location:</strong> Hyderabad, Telangana, India (Open to relocate to Dubai)</p>
+				<p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/devika-shendge-0750183a1/" target="_blank">linkedin.com/in/devika-shendge-0750183a1</a></p>
+				<p><strong>GitHub / Portfolio:</strong> <a href="https://github.com/devikashendge" target="_blank">github.com/devikashendge</a></p>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		&copy; <span id="year"></span> Devika Shendge. All rights reserved.
+	</footer>
+
+	<script>
+		document.getElementById("year").textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
